@@ -20,8 +20,10 @@ namespace caculus
             int count;
             int end;
             int posOfx;
+            int posOfhat = 0;
             //int counting;
             List<int> coeff = new List<int>();
+            List<int> hat= new List<int>();
 
             end = poly.Length;
             start = 0;
@@ -31,19 +33,46 @@ namespace caculus
 
             while ((start <= end) && (posOfx > -1))
             {
+
+             
                 count = end - start;
                 posOfx = poly.IndexOf('x', start, count);
+                
+
                 if (posOfx == -1) break;
+              
+
                 start = posOfx + 1;
+
                 coeff.Add(posOfx);
+            
 
 
             }
-            Console.WriteLine(coeff[0]);
-            foreach (int y in coeff)
+            while ((start <= end) && (posOfhat > -1))
             {
-                Console.WriteLine(coeff[y]);
+                count = end - start;
+
+                posOfhat = poly.IndexOf('^', start, count);
+
+
+                if (posOfhat == -1) break;
+
+                start = posOfhat + 1;
+                hat.Add(posOfhat);
+
+
             }
+            int n = coeff.Count;
+         
+            for (int i = 0;i <=(n-1); i++)
+            {
+                Console.WriteLine($"Coeff: {coeff[i]}");
+                Console.WriteLine($"Hat: {hat[i]}");
+            }
+            
+
+
             Console.ReadLine();
 
 
